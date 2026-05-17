@@ -12,6 +12,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules\/(?!(lenis)\/).*/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+            plugins: ["@babel/plugin-proposal-class-properties"],
+          },
+        },
+      },
+      {
         test: /\.(png|jpe?g|jpg)$/i,
         loader: "file-loader",
         options: {

@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config=webpack.prod.js",
-    "build-dev": "webpack --config=webpack.dev.js",
-    "start": "webpack serve webpack-dev-server --open --config=webpack.dev.js"
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && webpack --config=webpack.prod.js",
+    "build-dev": "export NODE_OPTIONS=--openssl-legacy-provider && webpack --config=webpack.dev.js",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && webpack serve --open --config=webpack.dev.js"
   },
   "keywords": [
     "pandemic",
@@ -18,11 +18,16 @@
   "author": "Zhanarbek Osmonaliev",
   "license": "ISC",
   "dependencies": {
+    "lenis": "^1.3.23",
     "three": "^0.128.0",
     "three-globe": "^2.18.8",
     "three-glow-mesh": "^0.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/preset-env": "^7.29.2",
+    "babel-loader": "^10.1.1",
     "file-loader": "^6.2.0",
     "json-loader": "^0.5.7",
     "webpack": "^5.15.0",
