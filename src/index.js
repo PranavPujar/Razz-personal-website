@@ -9,6 +9,101 @@ import Lenis from 'lenis';
 var renderer, camera, scene, controls, lenis;
 var Globe;
 
+var streamGeneration = 0;
+var streamSpeedDiv = 1;
+
+function rafDelay(ms, gen) {
+  return new Promise(resolve => {
+    if (streamGeneration !== gen || ms < 16) { resolve(); return; }
+    const start = performance.now();
+    function tick() {
+      if (streamGeneration !== gen) { resolve(); return; }
+      if (performance.now() - start >= ms) { resolve(); }
+      else { requestAnimationFrame(tick); }
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+function wrapWordsInEl(el) {
+  if (el.dataset.wrapped) return;
+  el.dataset.wrapped = 'true';
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const parts = node.textContent.split(/(\s+)/);
+      if (parts.every(p => !/\S/.test(p))) return;
+      const frag = document.createDocumentFragment();
+      parts.forEach(part => {
+        if (/\S/.test(part)) {
+          const span = document.createElement('span');
+          span.textContent = part;
+          span.className = 'stream-word';
+          frag.appendChild(span);
+        } else {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      if (node.tagName === 'A' || node.tagName === 'U') {
+        const wrapper = document.createElement('span');
+        wrapper.className = 'stream-word';
+        node.parentNode.insertBefore(wrapper, node);
+        wrapper.appendChild(node);
+      } else {
+        [...node.childNodes].forEach(walk);
+      }
+    }
+  }
+  walk(el);
+}
+
+async function streamEl(el, targets, started, gen) {
+  if (started.has(el)) return;
+  started.add(el);
+
+  el.classList.add('is-streaming');
+  const words = [...el.querySelectorAll('.stream-word')];
+  const nextEl = targets[targets.indexOf(el) + 1];
+  let nextTriggered = false;
+
+  for (let i = 0; i < words.length; i++) {
+    if (streamGeneration !== gen) {
+      el.classList.remove('is-streaming');
+      return;
+    }
+
+    words[i].classList.add('visible');
+
+    const remaining = words.length - i - 1;
+    if (!nextTriggered && remaining <= 25 && nextEl) {
+      nextTriggered = true;
+      streamEl(nextEl, targets, started, gen);
+    }
+
+    const randomDelay = (25 + (Math.random() * 20 - 10)) / streamSpeedDiv;
+    await rafDelay(randomDelay, gen);
+  }
+
+  el.classList.remove('is-streaming');
+  if (streamGeneration !== gen) return;
+  if (!nextTriggered && nextEl) streamEl(nextEl, targets, started, gen);
+}
+
+async function streamView(viewEl) {
+  streamSpeedDiv = viewEl.id === 'view-home' ? 1.9 : 0.8;
+  const gen = ++streamGeneration;
+  const targets = [...viewEl.querySelectorAll('.bio p, .section-title, .card p, .card h3')];
+  targets.forEach(el => wrapWordsInEl(el));
+
+  const allWords = [...viewEl.querySelectorAll('.stream-word')];
+  allWords.forEach(w => { w.style.transition = 'none'; w.classList.remove('visible'); });
+  await new Promise(r => requestAnimationFrame(r));
+  allWords.forEach(w => { w.style.transition = ''; });
+
+  if (targets.length > 0) streamEl(targets[0], targets, new Set(), gen);
+}
+
 init();
 initGlobe();
 onWindowResize();
@@ -17,9 +112,10 @@ animate();
 setTimeout(() => {
   document.body.classList.add('hero-exited');
   document.getElementById('main-nav').classList.add('visible');
-  
-  // Re-size renderer for globe now that container is visible
+
   setTimeout(onWindowResize, 10);
+  const activeView = document.querySelector('.view-content.active');
+  if (activeView) streamView(activeView);
   
   lenis = new Lenis({
     duration: 1.2,
@@ -78,8 +174,12 @@ function init() {
   const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
+      document.body.classList.add('theme-switching');
       document.body.classList.toggle("light-mode");
       updateGlobeMaterial();
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        document.body.classList.remove('theme-switching');
+      }));
     });
   }
 
@@ -90,8 +190,10 @@ function init() {
       e.preventDefault();
       const targetView = link.getAttribute('data-view');
       document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
-      document.getElementById(`view-${targetView}`).classList.add('active');
+      const newView = document.getElementById(`view-${targetView}`);
+      newView.classList.add('active');
       if (lenis) lenis.scrollTo(0);
+      streamView(newView);
     });
   });
   
@@ -101,16 +203,24 @@ function updateGlobeMaterial() {
   if (!Globe) return;
   const isLight = document.body.classList.contains("light-mode");
   const globeMaterial = Globe.globeMaterial();
+  Globe.showAtmosphere(false); 
+
+  globeMaterial.transparent = true;
   if (isLight) {
-    globeMaterial.color = new Color(0xcccccc);
-    globeMaterial.emissive = new Color(0x444444);
-    globeMaterial.emissiveIntensity = 0.2;
-    Globe.hexPolygonColor(() => "rgba(0,0,0, 0.7)");
+    // LIGHT MODE: 100% Transparent Surface + Dark Black Dots
+    globeMaterial.opacity = 0; // Makes the sphere itself invisible
+    
+    // Use a solid dark black for the hex polygons
+    Globe.hexPolygonColor(() => "#000000"); 
+
   } else {
-    globeMaterial.color = new Color(0xffffff);
-    globeMaterial.emissive = new Color(0x220038);
-    globeMaterial.emissiveIntensity = 0.1;
-    Globe.hexPolygonColor(() => "rgba(255,255,255, 0.7)");
+    // DARK MODE: White Surface + Dark Blue Dots
+    globeMaterial.opacity = 1.0;
+    globeMaterial.color = new Color(0xffffff); // White surface
+    
+    // Dark Blue dots
+    Globe.hexPolygonColor(() => "#003366");
+
   }
 }
 
