@@ -7,39 +7,8 @@
             "country": "UAE",
             "city": "Dubai",
             "lat": "25.2048",
-            "lng": "55.2708"
-        },
-        {
-            "text": "BLR",
-            "size": 1.0,
-            "country": "India",
-            "city": "Karnataka",
-            "lat": "12.9716",
-            "lng": "77.5946"
-        },
-        {
-            "text": "MAA",
-            "size": 1.0,
-            "country": "India",
-            "city": "Tamil Nadu",
-            "lat": "13.0827",
-            "lng": "80.2707"
-        },
-        {
-            "text": "ARX",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Arlington, TX",
-            "lat": "32.7357",
-            "lng": "-97.1081"
-        },
-        {
-            "text": "AUS",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Austin, TX",
-            "lat": "30.2672",
-            "lng": "-97.7431"
+            "lng": "55.2708",
+            "showLabel": true
         },
         {
             "text": "SJC",
@@ -47,7 +16,35 @@
             "country": "USA",
             "city": "San Jose, CA",
             "lat": "37.3382",
-            "lng": "-121.8863"
+            "lng": "-121.8863",
+            "showLabel": true
+        },
+        {
+            "text": "ARX",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Arlington, TX",
+            "lat": "32.7357",
+            "lng": "-97.1081",
+            "showLabel": false
+        },
+        {
+            "text": "AUS",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Austin, TX",
+            "lat": "30.2672",
+            "lng": "-97.7431",
+            "showLabel": false
+        },
+        {
+            "text": "BLR",
+            "size": 1.0,
+            "country": "India",
+            "city": "Bangalore",
+            "lat": "12.9716",
+            "lng": "77.5946",
+            "showLabel": false
         },
         {
             "text": "NYC",
@@ -55,15 +52,8 @@
             "country": "USA",
             "city": "New York, NY",
             "lat": "40.7128",
-            "lng": "-74.0060"
-        },
-        {
-            "text": "WAS",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Washington D.C.",
-            "lat": "38.9072",
-            "lng": "-77.0369"
+            "lng": "-74.0060",
+            "showLabel": false
         },
         {
             "text": "CMB",
@@ -71,7 +61,35 @@
             "country": "Sri Lanka",
             "city": "Colombo",
             "lat": "6.9271",
-            "lng": "79.8612"
+            "lng": "79.8612",
+            "showLabel": false
+        },
+        {
+            "text": "MAA",
+            "size": 1.0,
+            "country": "India",
+            "city": "Chennai",
+            "lat": "13.0827",
+            "lng": "80.2707",
+            "showLabel": false
+        },
+        {
+            "text": "WAS",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Washington D.C.",
+            "lat": "38.9072",
+            "lng": "-77.0369",
+            "showLabel": false
+        },
+        {
+            "text": "FDK",
+            "size": 1.0,
+            "country": "USA",
+            "city": "Frederick, MD",
+            "lat": "39.4143",
+            "lng": "-77.4105",
+            "showLabel": false
         }
     ]
 }
