@@ -1,6 +1,10 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
 
+function storageKey() {
+  return window.innerWidth < 700 ? 'theme-mobile' : 'theme';
+}
+
 function createTheme() {
   const { subscribe, set, update } = writable('dark');
 
@@ -8,8 +12,9 @@ function createTheme() {
     subscribe,
     init() {
       if (!browser) return;
-      const defaultTheme = window.innerWidth < 700 ? 'light' : 'dark';
-      const saved = localStorage.getItem('theme') || defaultTheme;
+      const isMobile = window.innerWidth < 700;
+      const defaultTheme = isMobile ? 'light' : 'dark';
+      const saved = localStorage.getItem(storageKey()) || defaultTheme;
       set(saved);
       const isLight = saved === 'light';
       document.documentElement.classList.toggle('light-mode', isLight);
@@ -19,7 +24,7 @@ function createTheme() {
       update(mode => {
         const next = mode === 'dark' ? 'light' : 'dark';
         if (browser) {
-          localStorage.setItem('theme', next);
+          localStorage.setItem(storageKey(), next);
           const isLight = next === 'light';
           document.body.classList.add('theme-switching');
           document.documentElement.classList.toggle('light-mode', isLight);
