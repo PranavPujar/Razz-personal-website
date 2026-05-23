@@ -3,92 +3,157 @@
     "airports": [
         {
             "text": "DXB",
-            "size": 1.0,
-            "country": "UAE",
             "city": "Dubai",
             "lat": "25.2048",
             "lng": "55.2708",
-            "showLabel": true
-        },
-        {
-            "text": "SJC",
-            "size": 1.0,
-            "country": "USA",
-            "city": "San Jose, CA",
-            "lat": "37.3382",
-            "lng": "-121.8863",
-            "showLabel": true
-        },
-        {
-            "text": "ARX",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Arlington, TX",
-            "lat": "32.7357",
-            "lng": "-97.1081",
-            "showLabel": false
-        },
-        {
-            "text": "AUS",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Austin, TX",
-            "lat": "30.2672",
-            "lng": "-97.7431",
             "showLabel": false
         },
         {
             "text": "BLR",
-            "size": 1.0,
-            "country": "India",
             "city": "Bangalore",
             "lat": "12.9716",
             "lng": "77.5946",
             "showLabel": false
         },
         {
-            "text": "NYC",
-            "size": 1.0,
-            "country": "USA",
-            "city": "New York, NY",
-            "lat": "40.7128",
-            "lng": "-74.0060",
-            "showLabel": false
-        },
-        {
             "text": "CMB",
-            "size": 1.0,
-            "country": "Sri Lanka",
             "city": "Colombo",
             "lat": "6.9271",
             "lng": "79.8612",
+            "alt": 0,
             "showLabel": false
         },
         {
-            "text": "MAA",
-            "size": 1.0,
-            "country": "India",
-            "city": "Chennai",
-            "lat": "13.0827",
-            "lng": "80.2707",
+            "text": "CDG",
+            "city": "Paris",
+            "lat": "49.0097",
+            "lng": "2.5479",
+            "alt": 0,
             "showLabel": false
         },
         {
-            "text": "WAS",
-            "size": 1.0,
-            "country": "USA",
+            "text": "FCO",
+            "city": "Rome",
+            "lat": "41.8003",
+            "lng": "12.2389",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "BRU",
+            "city": "Brussels",
+            "lat": "50.9010",
+            "lng": "4.4844",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "ZRH",
+            "city": "Zurich",
+            "lat": "47.4647",
+            "lng": "8.5492",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "FRA",
+            "city": "Frankfurt",
+            "lat": "50.0379",
+            "lng": "8.5622",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "AMS",
+            "city": "Amsterdam",
+            "lat": "52.3105",
+            "lng": "4.7683",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "DFW",
+            "city": "Dallas",
+            "lat": "32.8998",
+            "lng": "-97.0403",
+            "showLabel": false
+        },
+        {
+            "text": "IAH",
+            "city": "Houston",
+            "lat": "29.9902",
+            "lng": "-95.3368",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "SJC",
+            "city": "San Jose",
+            "lat": "37.3621",
+            "lng": "-121.9290",
+            "showLabel": false
+        },
+        {
+            "text": "LAX",
+            "city": "Los Angeles",
+            "lat": "33.9425",
+            "lng": "-118.4081",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "DCA",
             "city": "Washington D.C.",
-            "lat": "38.9072",
-            "lng": "-77.0369",
+            "lat": "38.8521",
+            "lng": "-77.0377",
+            "alt": 0,
             "showLabel": false
         },
         {
-            "text": "FDK",
-            "size": 1.0,
-            "country": "USA",
-            "city": "Frederick, MD",
-            "lat": "39.4143",
-            "lng": "-77.4105",
+            "text": "LGA",
+            "city": "New York",
+            "lat": "40.7769",
+            "lng": "-73.8740",
+            "showLabel": false
+        },
+        {
+            "text": "XNA",
+            "city": "Arkansas",
+            "lat": "36.2818",
+            "lng": "-94.3068",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "MSY",
+            "city": "New Orleans",
+            "lat": "29.9934",
+            "lng": "-90.2580",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "SLC",
+            "city": "Salt Lake City",
+            "lat": "40.7899",
+            "lng": "-111.9791",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "LAS",
+            "city": "Las Vegas",
+            "lat": "36.0840",
+            "lng": "-115.1537",
+            "alt": 0,
+            "showLabel": false
+        },
+        {
+            "text": "SHD",
+            "city": "Virginia",
+            "lat": "38.2638",
+            "lng": "-78.8964",
+            "alt": 0,
             "showLabel": false
         }
     ]

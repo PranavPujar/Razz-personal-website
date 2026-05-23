@@ -111,7 +111,8 @@
             .labelSize(2)
             .pointsData(airportHistory.airports)
             .pointColor(() => '#ffffff')
-            .pointRadius(0.1);
+            .pointRadius(0.1)
+            .pointAltitude(d => d.alt ?? 0.18);
         }, 1000);
 
         globe.rotateY(-Math.PI * (5 / 9));
