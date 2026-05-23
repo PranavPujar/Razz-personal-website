@@ -12,6 +12,15 @@
   import travelHistory from '../files/my-flights.json';
   import airportHistory from '../files/my-airports.json';
 
+  // ---------------------------------------------------------------------------
+  // APPROACH 2: GLOBAL TIMING LOOP
+  // ---------------------------------------------------------------------------
+  
+  // TUNING KNOBS
+  const GLOBAL_SPEED = 40.0;
+  // Final flight ends at ~21s. Let's make the loop 23s.
+  const TOTAL_CYCLE_TIME = 97000 / GLOBAL_SPEED;
+
   let container;
 
   function updateGlobeMaterial(globe, isLight) {
@@ -37,7 +46,7 @@
 
   onMount(() => {
     let renderer, camera, scene, controls, globe;
-    let rafId, raf1, raf2, resizeTimer, arcsTimer;
+    let rafId, raf1, raf2, resizeTimer, startTimer;
     let onResize;
     let active = true;
 
@@ -84,9 +93,6 @@
         controls.autoRotate = true;
         controls.autoRotateSpeed = 1.2;
 
-        // On touch devices, set pan-y so the browser handles vertical swipes as
-        // page scroll even if OrbitControls calls preventDefault on touchmove.
-        // Horizontal touch drags are captured by OrbitControls for globe rotation.
         if (isMobile) {
           renderer.domElement.style.touchAction = 'pan-y';
         }
@@ -100,25 +106,31 @@
           .atmosphereAltitude(0.25)
           .hexPolygonColor(() => 'rgba(255,255,255, 0.7)');
 
-        arcsTimer = setTimeout(() => {
+        startTimer = setTimeout(() => {
           if (!active) return;
           globe
             .arcsData(travelHistory.flights)
             .arcColor(() => get(theme) === 'light' ? '#000000' : '#66E3FF')
             .arcAltitude(e => e.arcAlt)
-            .arcStroke(e => e.status ? 0.5 : 0.3)
+            .arcStroke(0.4)
             .arcDashLength(e => e.dashLength)
             .arcDashGap(e => e.dashGap)
-            .arcDashInitialGap(e => e.dashInitialGap)
-            .arcDashAnimateTime(7000)
-            .arcsTransitionDuration(1000)
+            // Here we use the global animation cycle but stagger by startTime.
+            // arcDashAnimateTime is the whole loop duration.
+            .arcDashInitialGap(e => {
+                const cycleLength = e.dashLength + e.dashGap;
+                const startTimeInCycle = (e.startTime / GLOBAL_SPEED) / TOTAL_CYCLE_TIME;
+                // We want the dash to be at position 0 at t = startTime.
+                return startTimeInCycle * cycleLength;
+            })
+            .arcDashAnimateTime(TOTAL_CYCLE_TIME)
             .labelsData(airportHistory.airports.filter(a => a.showLabel))
             .labelColor(() => get(theme) === 'light' ? '#000000' : '#66E3FF')
             .labelText('text')
             .labelSize(2)
             .pointsData(airportHistory.airports)
             .pointColor(() => get(theme) === 'light' ? '#000000' : '#040d21')
-            .pointRadius(0.1)
+            .pointRadius(0.0)
             .pointAltitude(d => d.alt ?? 0.07);
         }, 1000);
 
@@ -156,7 +168,7 @@
       cancelAnimationFrame(raf1);
       cancelAnimationFrame(raf2);
       if (rafId) cancelAnimationFrame(rafId);
-      clearTimeout(arcsTimer);
+      clearTimeout(startTimer);
       clearTimeout(resizeTimer);
       unsubTheme();
       if (onResize) window.removeEventListener('resize', onResize);

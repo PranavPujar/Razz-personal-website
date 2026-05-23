@@ -9,13 +9,26 @@ import "three/examples/jsm/controls/OrbitControls.js";
 //#region src/lib/Globe.svelte
 function Globe($$renderer, $$props) {
 	$$renderer.component(($$renderer) => {
+		const GLOBAL_SPEED_MULTIPLIER = 10;
+		const BASE_FLIGHT_DURATION = 4e3;
+		const BASE_STEP_DELAY = 400;
+		const BASE_EU_CHAIN_DELAY = 150;
+		const BASE_RETURN_DELAY = 800;
+		const BASE_LOOP_PAUSE = 1500;
+		BASE_FLIGHT_DURATION / GLOBAL_SPEED_MULTIPLIER;
+		BASE_STEP_DELAY / GLOBAL_SPEED_MULTIPLIER;
+		BASE_EU_CHAIN_DELAY / GLOBAL_SPEED_MULTIPLIER;
+		BASE_RETURN_DELAY / GLOBAL_SPEED_MULTIPLIER;
+		BASE_LOOP_PAUSE / GLOBAL_SPEED_MULTIPLIER;
 		$$renderer.push(`<div id="globe-container"></div>`);
 	});
 }
 //#endregion
 //#region src/lib/ImageSlideshow.svelte
-function ImageSlideshow($$renderer) {
-	$$renderer.push(`<div class="profile-photo-wrap"><div class="profile-photo-circle"><video class="slideshow-video" src="/src/files/slideshow.mp4" autoplay="" loop="" muted="" playsinline=""></video></div></div>`);
+function ImageSlideshow($$renderer, $$props) {
+	$$renderer.component(($$renderer) => {
+		$$renderer.push(`<div class="profile-photo-wrap"><div class="profile-photo-circle"><video class="slideshow-video" src="/src/files/slideshow.mp4" autoplay="" loop="" muted="" playsinline=""></video></div></div>`);
+	});
 }
 //#endregion
 //#region src/routes/+page.svelte

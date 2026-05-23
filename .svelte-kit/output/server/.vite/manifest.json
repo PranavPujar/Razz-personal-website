@@ -143,7 +143,7 @@
       "_theme.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.BOiwhi13.css"
+      "_app/immutable/assets/_layout.COWngN0u.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -156,6 +156,9 @@
       "_index-server2.js",
       "_Streamer.js",
       "_theme.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DH-H6p_0.css"
     ]
   },
   "src/routes/career/+page.svelte": {
