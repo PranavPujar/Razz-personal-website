@@ -26,8 +26,8 @@
 
 <nav id="main-nav" class:visible={ready}>
   <a href="/" class="nav-name nav-link" style="text-decoration: none; color: inherit;" onclick={handleHome}>
-    <span class="nav-name-text">Pranav Pujar</span>
-    <span class="nav-subtitle">Software Engineer &amp; ML Researcher</span>
+    <span class="nav-name-text">Rasajna</span>
+    <span class="nav-subtitle">Talent Acquisition Associate</span>
   </a>
 
   <div class="nav-right">

@@ -377,6 +377,34 @@ html.light-mode .text-link-uta:hover {
   text-shadow: 0 0 10px rgba(26, 90, 143, 0.35);
 }
 
+.text-link-hw { color: #6ab4f5; text-decoration-color: #6ab4f5; }
+.text-link-hw:hover {
+  text-decoration-color: #93ccff;
+  text-shadow: 0 0 10px rgba(106, 180, 245, 0.7);
+  color: #93ccff;
+}
+
+html.light-mode .text-link-hw { color: #2b7bb9; text-decoration-color: #2b7bb9; }
+html.light-mode .text-link-hw:hover {
+  color: #1a5a8f;
+  text-decoration-color: #1a5a8f;
+  text-shadow: 0 0 10px rgba(26, 90, 143, 0.35);
+}
+
+.text-link-bi { color: rgb(0, 230, 118); text-decoration-color: rgb(0, 230, 118); }
+.text-link-bi:hover {
+  text-decoration-color: rgb(100, 255, 178);
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.7);
+  color: rgb(100, 255, 178);
+}
+
+html.light-mode .text-link-bi { color: rgb(0, 150, 70); text-decoration-color: rgb(0, 150, 70); }
+html.light-mode .text-link-bi:hover {
+  color: rgb(0, 100, 40);
+  text-decoration-color: rgb(0, 100, 40);
+  text-shadow: 0 0 10px rgba(0, 100, 40, 0.35);
+}
+
 /* ── PROFILE PHOTO CIRCLE ── */
 .profile-photo-wrap {
   width: 100%;

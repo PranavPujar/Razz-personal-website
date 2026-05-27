@@ -1,14 +1,11 @@
 <footer class="footer">
   <div class="social-icons">
-    <a href="https://www.linkedin.com/in/pranavpujar/" target="_blank" class="social-icon" title="LinkedIn">
+    <a href="https://www.linkedin.com/in/rasajna-manthapurwar-%D8%B1%D8%A7%D8%B3%D8%A7%D8%AC%D9%86%D8%A7-%D9%85%D8%A7%D9%86%D8%AB%D8%A7%D8%A8%D9%88%D8%B1%D9%88%D8%A7%D8%B1-66878921b/" target="_blank" class="social-icon" title="LinkedIn">
       <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
     </a>
-    <a href="https://scholar.google.com/citations?user=b5yGCz8AAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">
-      <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.828 3.38a7.001 7.001 0 0 1 14.344 0L24 9.5 12 0z"/></svg>
-    </a>
-    <a href="https://github.com/PranavPujar" target="_blank" class="social-icon" title="GitHub">
-      <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.82 1.102.82 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    <a href="mailto:rasajna17@outlook.com" class="social-icon" title="Email">
+      <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099l3.83-3.104 5.612 8.138h-18.745l5.479-8.133zm8.171-1.259l4.653-3.771v9.48l-4.653-5.709z"/></svg>
     </a>
   </div>
-  <div class="copyright">© 2026 Pranav Umakant Pujar</div>
+  <div class="copyright">© 2026 Rasajna</div>
 </footer>
